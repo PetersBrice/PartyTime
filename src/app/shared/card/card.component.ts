@@ -8,22 +8,22 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class CardComponent implements OnInit {
   // private property to store person value
-  private _symptome: any;
+  private _seance: any;
 
   /**
    * Component constructor
    */
   constructor() {
-    this._symptome = {};
+    this._seance = {};
   }
 
-  get symptome(): any {
-    return this._symptome;
+  get seance(): any {
+    return this._seance;
   }
 
   @Input()
-  set symptome(symptome: any) {
-    this._symptome = symptome;
+  set seance(seance: any) {
+    this._seance = seance;
   }
 
 

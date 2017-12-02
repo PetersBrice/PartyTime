@@ -1,0 +1,12 @@
+
+<section *ngFor="let seance of seances">
+<nwt-card [seance]="seance" >
+
+</nwt-card>
+</section>
+
+<button (click)="showDialog()" *ngIf="dialogStatus === 'inactive'" mat-fab color="accent">
+  <i class="material-icons">add</i>
+</button>
+
+

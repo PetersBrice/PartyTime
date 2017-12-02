@@ -1,4 +1,4 @@
-export const Symptoms = [
+export const Seances = [
   {
     'id': '5763cd4d9d2a4f259b53c901',
     'photo': 'https://randomuser.me/portraits/women/59.jpg',
@@ -38,7 +38,7 @@ export const Symptoms = [
   {
     'id': '5763cd4d15e6c2c28b70f2e8',
     'photo': 'https://randomuser.me/portraits/men/39.jpg',
-    'firstname': 'micro-penis',
+    'name': 'micro-penis',
     'solution': 'Pepito'
   }
 ];

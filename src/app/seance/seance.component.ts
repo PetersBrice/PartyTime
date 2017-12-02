@@ -1,31 +1,31 @@
 ///<reference path="../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import {Component, Injectable, Input, OnInit} from '@angular/core';
-import {Symptoms} from '../_static/symptoms';
+import {Seances} from '../_static/seances';
 
 @Component({
-  selector: 'nwt-symptome',
-  templateUrl: './symptome.component.html',
-  styleUrls: ['./symptome.component.css']
+  selector: 'nwt-seance',
+  templateUrl: './seance.component.html',
+  styleUrls: ['./seance.component.css']
 })
 
 @Injectable()
 export class SymptomeComponent implements OnInit {
-    private _symptome: any;
+    private _seance: any;
 
 // il faut ajouter un constructeur avec les parametres pour ajouter directement au tableau listsymptone
   constructor() {
-    this._symptome = Symptoms[0];
+    this._seance = Seances[0];
   }
 
   ngOnInit() {
   }
 
-  get symptome(): any {
-    return this._symptome;
+  get seance(): any {
+    return this._seance;
   }
   @Input()
-  set symptome(symptome: any) {
-    this._symptome = symptome;
+  set seance(symptome: any) {
+    this._seance = symptome;
   }
   afficher(event) {
     // this.nom="Modifier Name";//il faut afficher agrandir les informations

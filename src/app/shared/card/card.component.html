@@ -1,11 +1,20 @@
 <mat-card class="mat-whiteframe-2dp">
   <mat-card-title-group>
-    <img mat-card-mat-image src="{{ symptome.photo }}">
+    <img mat-card-mat-image src="{{ seance.photo }}">
     <mat-card-title>
-      <span>{{ symptome.name }} </span>
+      <span>{{ seance.name }} </span>
     </mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
-    <p>Solution : {{symptome.solution}}</p>
+    <p>Solution : {{seance.solution}}</p>
+
+    <div class="buttons-info">
+      <a mat-button title="Edit" href="javascript:void(0);">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <button mat-button title="Delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </mat-card-content>
 </mat-card>
