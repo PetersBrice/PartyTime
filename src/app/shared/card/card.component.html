@@ -1,18 +1,23 @@
 <mat-card class="mat-whiteframe-2dp">
   <mat-card-title-group>
-    <img mat-card-mat-image src="{{ seance.photo }}">
     <mat-card-title>
-      <span>{{ seance.name }} </span>
+      <a [routerLink]="['/seance', seance.id]">
+      <span>{{ seance.nom }} {{seance.type}}</span>
+      </a>
     </mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
-    <p>Solution : {{seance.solution}}</p>
+    <p>Description : {{ seance.description }} </p>
 
+    <mat-card-subtitle class="contact-info">
+      <mat-icon svgIcon="icon-phone"></mat-icon>
+      <a href="tel:{{ seance.phone }}"></a>
+    </mat-card-subtitle>
     <div class="buttons-info">
       <a mat-button title="Edit" href="javascript:void(0);">
         <mat-icon>edit</mat-icon>
       </a>
-      <button mat-button title="Delete">
+      <button mat-button title="Delete" (click)="delete(seance)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

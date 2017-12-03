@@ -8,25 +8,28 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { SymptomeComponent } from './seance/seance.component';
+import { SeanceComponent } from './seance/seance.component';
 import { ListseanceComponent } from './listseance/listseance.component';
 import {CardComponent} from './shared/card/card.component';
 import { FormComponent } from './shared/form/form.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
-import {HttpModule} from "@angular/http";
-import {HttpClientModule} from "@angular/common/http";
-import {APP_ROUTES} from "./app.routes";
+import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+import {APP_ROUTES} from './app.routes';
+import {SeanceService} from './shared/seance-service/seance.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, SymptomeComponent, ListseanceComponent, CardComponent, FormComponent, DialogComponent, HomeComponent],
+  declarations: [AppComponent, SeanceComponent, ListseanceComponent, CardComponent, FormComponent, DialogComponent, HomeComponent],
   entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
     HttpClientModule,
+    FormsModule,
     MatToolbarModule,
     MatDialogModule,
     MatIconModule,
@@ -35,7 +38,7 @@ import {APP_ROUTES} from "./app.routes";
     MatCardModule,
     APP_ROUTES
   ],
-  providers: [],
+  providers: [SeanceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

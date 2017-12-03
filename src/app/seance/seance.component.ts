@@ -1,6 +1,11 @@
-///<reference path="../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import {Component, Injectable, Input, OnInit} from '@angular/core';
-import {Seances} from '../_static/seances';
+import {SeanceService} from '../shared/seance-service/seance.service';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'nwt-seance',
@@ -9,15 +14,25 @@ import {Seances} from '../_static/seances';
 })
 
 @Injectable()
-export class SymptomeComponent implements OnInit {
+export class SeanceComponent implements OnInit {
     private _seance: any;
+    private _isSeance : boolean;
 
 // il faut ajouter un constructeur avec les parametres pour ajouter directement au tableau listsymptone
-  constructor() {
-    this._seance = Seances[0];
+  constructor(private _seanceService: SeanceService, private _route: ActivatedRoute) {
+    this._seance = {};
+    this._isSeance = false;
   }
 
   ngOnInit() {
+    Observable
+      .merge(
+        this._route.params
+          .filter(params => !!params['id'])
+          .flatMap(params => this._seanceService.fetchOne(params['id']))
+          .do(_ => this._isSeance = true)
+      )
+      .subscribe((seance: any) => this._seance = seance);
   }
 
   get seance(): any {
@@ -27,7 +42,5 @@ export class SymptomeComponent implements OnInit {
   set seance(symptome: any) {
     this._seance = symptome;
   }
-  afficher(event) {
-    // this.nom="Modifier Name";//il faut afficher agrandir les informations
-  }
+
 }

@@ -1,6 +1,6 @@
 
 <section *ngFor="let seance of seances">
-<nwt-card [seance]="seance" >
+<nwt-card [seance]="seance" (seanceDelete)="delete($event)">
 
 </nwt-card>
 </section>

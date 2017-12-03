@@ -1,20 +1,20 @@
 <h2 mat-dialog-title>Create new sceance</h2>
 
 <mat-dialog-content>
-  <form >
+  <form  #f="ngForm" >
 
     <table class="full-width" cellspacing="0">
       <tr>
         <td>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Nom" />
+          <mat-form-field class="full-width" >
+            <input matInput placeholder="nom" ngModel name="nom" />
           </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
           <mat-form-field class="full-width">
-            <mat-select>
+            <mat-select placeholder="type" ngModel name="type" >
               <mat-option value="Cardio">Cardio</mat-option>
               <mat-option value="Force">Force</mat-option>
               <mat-option value="Perte de poids">Perte de poids</mat-option>
@@ -24,13 +24,12 @@
       </tr>
 
 
-
-
 <tr>
   <td>
     <mat-form-field class="full-width">
-  <textarea matInput placeholder="Description"></textarea>
+  <textarea matInput placeholder="Description" ngModel name="description" ></textarea>
     </mat-form-field>
+
   </td>
 </tr>
     </table>
@@ -38,15 +37,14 @@
 
     <p>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Phone * (ex: 0612345678)" name="phone"/>
+        <input matInput placeholder="tel" ngModel name="tel" />
       </mat-form-field>
     </p>
-
   </form>
 </mat-dialog-content>
 
 
 <mat-dialog-actions align="end">
   <button mat-button type="button" (click)="cancel()">Cancel</button>
-  <button mat-button color="primary" type="submit">Save</button>
+  <button mat-button color="primary" type="submit" (click)="add(f.value)">Save</button>
 </mat-dialog-actions>
