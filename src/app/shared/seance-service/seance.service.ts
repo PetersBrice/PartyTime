@@ -10,10 +10,11 @@ import 'rxjs/add/operator/filter';
 export class SeanceService {
   // private property to store all backend URLs
   private _backendURL: any;
+  private truc: any;
 
   constructor(private _http: HttpClient) {
     this._backendURL = {};
-
+  this.truc = {};
     // build backend base url
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
     if (environment.backend.port) {
@@ -45,7 +46,17 @@ export class SeanceService {
   }
 
   update(seance: any): Observable<any> {
-    return this._http.put(this._backendURL.oneSeance.replace(':id', seance.id), seance, this._options());
+
+    console.log(seance);
+    /*on ne doit envoyer que le body*/
+    this.truc.nom = seance.nom;
+    this.truc.type = seance.type;
+    this.truc.description = seance.description;
+    this.truc.tel = seance.tel;
+
+    console.log(this.truc);
+
+    return this._http.put(this._backendURL.oneSeance.replace(':id', seance.id), this.truc, this._options());
   }
 
   delete(id: string): Observable<any[]> {

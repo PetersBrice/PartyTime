@@ -20,9 +20,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {APP_ROUTES} from './app.routes';
 import {SeanceService} from './shared/seance-service/seance.service';
 import {FormsModule} from '@angular/forms';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
-  declarations: [AppComponent, SeanceComponent, ListseanceComponent, CardComponent, FormComponent, DialogComponent, HomeComponent],
+  declarations: [AppComponent, SeanceComponent, ListseanceComponent, CardComponent, FormComponent, DialogComponent, HomeComponent, UpdateComponent],
   entryComponents: [DialogComponent],
   imports: [
     BrowserModule,

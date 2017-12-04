@@ -1,20 +1,27 @@
-<h2 mat-dialog-title>Create new sceance</h2>
+<h2 mat-dialog-title *ngIf="isUpdate">Update {{ model?.nom }}</h2>
+<h2 mat-dialog-title *ngIf="!isUpdate">Create new seance</h2>
 
 <mat-dialog-content>
   <form  #f="ngForm" >
+
+    <p *ngIf="isUpdate">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="ID (disabled)" disabled  name="id" [ngModel]="model.id" />
+      </mat-form-field>
+    </p>
 
     <table class="full-width" cellspacing="0">
       <tr>
         <td>
           <mat-form-field class="full-width" >
-            <input matInput placeholder="nom" ngModel name="nom" />
+            <input matInput placeholder="nom" [(ngModel)]="model.nom" name="nom" />
           </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
           <mat-form-field class="full-width">
-            <mat-select placeholder="type" ngModel name="type" >
+            <mat-select placeholder="type" [(ngModel)]="model.type" name="type" >
               <mat-option value="Cardio">Cardio</mat-option>
               <mat-option value="Force">Force</mat-option>
               <mat-option value="Perte de poids">Perte de poids</mat-option>
@@ -27,7 +34,7 @@
 <tr>
   <td>
     <mat-form-field class="full-width">
-  <textarea matInput placeholder="Description" ngModel name="description" ></textarea>
+  <textarea matInput placeholder="Description" [(ngModel)]="model.description" name="description" ></textarea>
     </mat-form-field>
 
   </td>
@@ -37,7 +44,7 @@
 
     <p>
       <mat-form-field class="full-width">
-        <input matInput placeholder="tel" ngModel name="tel" />
+        <input matInput placeholder="tel" [(ngModel)]="model.tel" name="tel" />
       </mat-form-field>
     </p>
   </form>
@@ -46,5 +53,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-button type="button" (click)="cancel()">Cancel</button>
-  <button mat-button color="primary" type="submit" (click)="add(f.value)">Save</button>
+  <button mat-button color="primary" type="submit" (click)="submit()">Save</button>
 </mat-dialog-actions>

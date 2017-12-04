@@ -10,11 +10,11 @@
     <p>Description : {{ seance.description }} </p>
 
     <mat-card-subtitle class="contact-info">
-      <mat-icon svgIcon="icon-phone"></mat-icon>
+      <mat-icon >phone</mat-icon>
       <a href="tel:{{ seance.phone }}"></a>
     </mat-card-subtitle>
     <div class="buttons-info">
-      <a mat-button title="Edit" href="javascript:void(0);">
+      <a mat-button title="Edit" [routerLink]="['/edit', seance.id]">
         <mat-icon>edit</mat-icon>
       </a>
       <button mat-button title="Delete" (click)="delete(seance)">

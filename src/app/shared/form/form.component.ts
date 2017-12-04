@@ -1,24 +1,47 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'nwt-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnChanges {
+  private _isUpdate: boolean;
+  private _model: any;
   private _cancel$: EventEmitter<any>;
-  private _add$: EventEmitter<any>;
+  private _submit$: EventEmitter<any>;
   constructor() {
     this._cancel$ = new EventEmitter();
-    this._add$ = new EventEmitter();
+    this._submit$ = new EventEmitter();
   }
 
   ngOnInit() {
   }
 
+  @Input()
+  set model(model: any) {
+    this._model = model;
+  }
+
+  get model(): any {
+    return this._model;
+  }
+  get isUpdate(): boolean {
+    return this._isUpdate;
+  }
 
   @Output('cancel') get cancel$(): EventEmitter<any> {
     return this._cancel$;
+  }
+
+  ngOnChanges(record) {
+    if (record.model && record.model.currentValue) {
+      this._model = record.model.currentValue;
+      this._isUpdate = true;
+    } else {
+      this._model = { };
+      this._isUpdate = false;
+    }
   }
 
   cancel() {
@@ -26,12 +49,12 @@ export class FormComponent implements OnInit {
   }
 
 
-  @Output('seanceAdd') get add$(): EventEmitter<any> {
-    return this._add$;
+  @Output('seanceAdd') get submit$(): EventEmitter<any> {
+    return this._submit$;
   }
 
-  add(seance: any) {
-    this._add$.emit(seance);
+  submit() {
+    this._submit$.emit(this._model);
   }
 
 
