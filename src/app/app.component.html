@@ -1,14 +1,16 @@
+<mat-toolbar class="extend-toolbar">
+  <span>
+    <a [routerLink]="['/']">
+      <img src="assets/images/icon.png" aria-label="nwt" alt="NWT">
+    </a>
+  </span>
 
+  <span class="flex"></span>
 
-<mat-card align="center">
-  <h1>YOUR BODY</h1>
-</mat-card>
-            <div style="padding-left: 300px;margin:100px">
-           <input type="text" placeholder="Seances....." size="60" style="height: 35px;"  />
-
-          <input type="image"   src="assets/images/searchlogo.png" width="40" height="40" />
-
-            </div>
+  <span>
+    <a [routerLink]="['/seances']">Seances</a>
+  </span>
+</mat-toolbar>
 
 
 

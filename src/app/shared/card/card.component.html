@@ -1,8 +1,11 @@
 <mat-card class="mat-whiteframe-2dp">
   <mat-card-title-group>
+    <img *ngIf="isTypeForce()" mat-card-mat-image src="assets/images/type/force.png">
+    <img *ngIf="isTypeCardio()" mat-card-mat-image src="assets/images/type/cardio.png">
+    <img *ngIf="isTypePertedePoids()" mat-card-mat-image src="assets/images/type/pertedepoids.png">
     <mat-card-title>
       <a [routerLink]="['/seance', seance.id]">
-      <span>{{ seance.nom }} {{seance.type}}</span>
+      <span>{{ seance.nom | uppercase}}</span>
       </a>
     </mat-card-title>
   </mat-card-title-group>
@@ -11,7 +14,7 @@
 
     <mat-card-subtitle class="contact-info">
       <mat-icon >phone</mat-icon>
-      <a href="tel:{{ seance.phone }}"></a>
+      <a href="tel:{{ seance.tel }}">{{ seance.tel }}</a>
     </mat-card-subtitle>
     <div class="buttons-info">
       <a mat-button title="Edit" [routerLink]="['/edit', seance.id]">

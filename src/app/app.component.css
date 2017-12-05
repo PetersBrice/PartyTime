@@ -32,7 +32,6 @@ mat-toolbar a:not(.active):hover {
 
 mat-toolbar a img {
   height: 100%;
-  margin-left: -60px;
 }
 
 mat-toolbar-row:nth-child(1) {

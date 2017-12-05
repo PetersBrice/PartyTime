@@ -13,7 +13,7 @@ import {Observable} from 'rxjs/Observable';
 })
 export class ListseanceComponent implements OnInit {
 
-
+  private _view: string;
   private _seances: any[];
   private _dialogStatus: string;
   private _backendURL: any;
@@ -23,13 +23,20 @@ export class ListseanceComponent implements OnInit {
     this._dialogStatus = 'inactive';
     this._backendURL = {};
     this._seances = [];
+    this._view = 'card';
   }
 
-// il faut ajouter au tableau les seances en se basant sur le constructeur using fields.
   ngOnInit() {
     this._seanceService
       .fetch()
       .subscribe((seances: any[]) => this._seances = seances);
+  }
+  get view(): string {
+    return this._view;
+  }
+
+  switchView() {
+    this._view = (this._view === 'card') ? 'list' : 'card';
   }
 
   get dialogStatus(): string {
@@ -68,7 +75,6 @@ export class ListseanceComponent implements OnInit {
       disableClose: true
     });
 
-    // subscribe to afterClosed observable to set dialog status and do process
     this._seanceDialog.afterClosed()
       .filter(_ => !!_)
       .flatMap(_ => this._add(_))
@@ -77,5 +83,17 @@ export class ListseanceComponent implements OnInit {
         _ => this._dialogStatus = 'inactive',
         () => this._dialogStatus = 'inactive'
       );
+  }
+
+  isTypeForce(seance: any): boolean {
+    return seance.type === 'Force';
+  }
+
+  isTypeCardio(seance: any): boolean {
+    return seance.type === 'Cardio';
+  }
+
+  isTypePertedePoids(seance: any): boolean {
+    return seance.type === 'Perte de poids';
   }
 }

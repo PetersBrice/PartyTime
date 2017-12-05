@@ -2,30 +2,38 @@
 <h2 mat-dialog-title *ngIf="!isUpdate">Create new seance</h2>
 
 <mat-dialog-content>
-  <form  #f="ngForm" >
+  <form novalidate [formGroup]="form" >
 
     <p *ngIf="isUpdate">
-      <mat-form-field class="full-width">
-        <input matInput placeholder="ID (disabled)" disabled  name="id" [ngModel]="model.id" />
-      </mat-form-field>
+      <span style="width:100%">ID (disabled)</span><br/>
+      <span style="width:100%">{{model.id}}</span>
     </p>
 
     <table class="full-width" cellspacing="0">
       <tr>
         <td>
-          <mat-form-field class="full-width" >
-            <input matInput placeholder="nom" [(ngModel)]="model.nom" name="nom" />
+          <mat-form-field class="full-width" [class.mgb15]="form.get('nom').dirty && form.get('nom').invalid">
+            <input matInput placeholder="nom" minlength="2" required formControlName="nom" name="nom" />
+            <mat-error *ngIf="form.get('nom').dirty && form.get('nom').hasError('required')">
+              <strong>Un nom est requis</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('nom').dirty && form.get('nom').hasError('minlength')">
+              <strong>Le nom est trop court</strong>
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <mat-form-field class="full-width">
-            <mat-select placeholder="type" [(ngModel)]="model.type" name="type" >
+          <mat-form-field class="full-width" [class.mgb15]="form.get('type').dirty && form.get('type').invalid">
+            <mat-select placeholder="type" formControlName="type" required name="type" >
               <mat-option value="Cardio">Cardio</mat-option>
               <mat-option value="Force">Force</mat-option>
               <mat-option value="Perte de poids">Perte de poids</mat-option>
             </mat-select>
+            <mat-error *ngIf="form.get('type').dirty && form.get('type').hasError('required')">
+              <strong>Un type est requis</strong>
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
@@ -34,7 +42,7 @@
 <tr>
   <td>
     <mat-form-field class="full-width">
-  <textarea matInput placeholder="Description" [(ngModel)]="model.description" name="description" ></textarea>
+  <textarea matInput placeholder="Description" formControlName="description" name="description" ></textarea>
     </mat-form-field>
 
   </td>
@@ -44,7 +52,13 @@
 
     <p>
       <mat-form-field class="full-width">
-        <input matInput placeholder="tel" [(ngModel)]="model.tel" name="tel" />
+        <input matInput placeholder="tel" formControlName="tel" name="tel" required />
+        <mat-error *ngIf="form.get('tel').dirty && form.get('tel').hasError('required')">
+          <strong>Un numéros est requis</strong>
+        </mat-error>
+        <mat-error *ngIf="form.get('tel').dirty && form.get('tel').hasError('pattern')">
+          <strong>numéros non conforme</strong>
+        </mat-error>
       </mat-form-field>
     </p>
   </form>
@@ -53,5 +67,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-button type="button" (click)="cancel()">Cancel</button>
-  <button mat-button color="primary" type="submit" (click)="submit()">Save</button>
+  <button mat-button color="primary" type="submit" (click)="submit(form.value)" [disabled]="form.invalid">Save</button>
 </mat-dialog-actions>

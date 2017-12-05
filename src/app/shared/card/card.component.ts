@@ -7,13 +7,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 
 export class CardComponent implements OnInit {
-  // private property to store person value
   private _seance: any;
   private _delete$: EventEmitter<any>;
 
-  /**
-   * Component constructor
-   */
+
   constructor() {
     this._seance = {};
     this._delete$ = new EventEmitter();
@@ -37,9 +34,18 @@ export class CardComponent implements OnInit {
     this._delete$.emit(person);
   }
 
-  /**
-   * OnInit implementation
-   */
+  isTypeForce(): boolean {
+    return this._seance.type === 'Force';
+  }
+
+  isTypeCardio(): boolean {
+    return this._seance.type === 'Cardio';
+  }
+
+  isTypePertedePoids(): boolean {
+    return this._seance.type === 'Perte de poids';
+  }
+
   ngOnInit() {
   }
 

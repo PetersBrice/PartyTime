@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'nwt-form',
@@ -10,13 +11,20 @@ export class FormComponent implements OnInit, OnChanges {
   private _model: any;
   private _cancel$: EventEmitter<any>;
   private _submit$: EventEmitter<any>;
+  private _form: FormGroup;
   constructor() {
     this._cancel$ = new EventEmitter();
     this._submit$ = new EventEmitter();
+    this._form = this._buildForm();
   }
 
   ngOnInit() {
   }
+
+  get form(): FormGroup {
+    return this._form;
+  }
+
 
   @Input()
   set model(model: any) {
@@ -53,8 +61,25 @@ export class FormComponent implements OnInit, OnChanges {
     return this._submit$;
   }
 
-  submit() {
-    this._submit$.emit(this._model);
+  submit(seance: any) {
+    seance.id = this._model.id;
+    this._submit$.emit(seance);
+  }
+
+  private _buildForm(): FormGroup {
+    return new FormGroup({
+      id: new FormControl(''),
+      nom: new FormControl('', Validators.compose([
+        Validators.required, Validators.minLength(2)
+      ])),
+      type: new FormControl('', Validators.compose([
+        Validators.required, Validators.minLength(2)
+      ])),
+      description: new FormControl(''),
+      tel: new FormControl('', Validators.compose([
+        Validators.required, Validators.pattern('\\d{10}')
+      ]))
+    });
   }
 
 

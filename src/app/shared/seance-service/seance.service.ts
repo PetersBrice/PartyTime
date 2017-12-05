@@ -10,11 +10,11 @@ import 'rxjs/add/operator/filter';
 export class SeanceService {
   // private property to store all backend URLs
   private _backendURL: any;
-  private truc: any;
+  private temp: any;
 
   constructor(private _http: HttpClient) {
     this._backendURL = {};
-  this.truc = {};
+  this.temp = {};
     // build backend base url
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
     if (environment.backend.port) {
@@ -42,21 +42,22 @@ export class SeanceService {
   }
 
   create(seance: any): Observable<any> {
-    return this._http.post(this._backendURL.allSeance, seance, this._options());
+    this.temp.nom = seance.nom;
+    this.temp.type = seance.type;
+    this.temp.description = seance.description;
+    this.temp.tel = seance.tel;
+    return this._http.post(this._backendURL.allSeance, this.temp, this._options());
   }
 
   update(seance: any): Observable<any> {
 
     console.log(seance);
     /*on ne doit envoyer que le body*/
-    this.truc.nom = seance.nom;
-    this.truc.type = seance.type;
-    this.truc.description = seance.description;
-    this.truc.tel = seance.tel;
-
-    console.log(this.truc);
-
-    return this._http.put(this._backendURL.oneSeance.replace(':id', seance.id), this.truc, this._options());
+    this.temp.nom = seance.nom;
+    this.temp.type = seance.type;
+    this.temp.description = seance.description;
+    this.temp.tel = seance.tel;
+    return this._http.put(this._backendURL.oneSeance.replace(':id', seance.id), this.temp, this._options());
   }
 
   delete(id: string): Observable<any[]> {

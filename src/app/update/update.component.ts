@@ -16,9 +16,6 @@ import {SeanceService} from '../shared/seance-service/seance.service';
 export class UpdateComponent implements OnInit {
   private _peopleDialog: MatDialogRef<DialogComponent>;
 
-  /**
-   * Component constructor
-   */
   constructor(private _route: ActivatedRoute, private _router: Router, private _dialog: MatDialog, private _seanceService: SeanceService) {
   }
 
@@ -26,7 +23,7 @@ export class UpdateComponent implements OnInit {
    * OnInit implementation
    */
   ngOnInit() {
-
+    console.log(this._route.params);
     this._route.params
       .map((params: any) => params.id)
       .flatMap((id: string) => this._seanceService.fetchOne(id))
@@ -37,7 +34,6 @@ export class UpdateComponent implements OnInit {
           data: seance
         });
 
-        // subscribe to afterClosed observable to set dialog status and do process
         this._peopleDialog.afterClosed()
           .filter(_ => !!_)
           .flatMap(_ => this._seanceService.update(_))

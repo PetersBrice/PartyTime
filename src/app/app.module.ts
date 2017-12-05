@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 // MATERIAL DESIGN MODULES
 import {
   MatToolbarModule, MatCardModule, MatDialogModule, MatIconModule, MatSelectModule,
-  MatInputModule
+  MatInputModule, MatListModule, MatButtonModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -19,7 +19,7 @@ import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {APP_ROUTES} from './app.routes';
 import {SeanceService} from './shared/seance-service/seance.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 
 @NgModule({
@@ -31,9 +31,12 @@ import { UpdateComponent } from './update/update.component';
     HttpModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
+    MatListModule,
     MatDialogModule,
     MatIconModule,
+    MatButtonModule,
     MatSelectModule,
     MatInputModule,
     MatCardModule,
