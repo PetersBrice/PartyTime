@@ -21,9 +21,10 @@ import {APP_ROUTES} from './app.routes';
 import {SeanceService} from './shared/seance-service/seance.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
+import { DetailsComponent } from './shared/details/details.component';
 
 @NgModule({
-  declarations: [AppComponent, SeanceComponent, ListseanceComponent, CardComponent, FormComponent, DialogComponent, HomeComponent, UpdateComponent],
+  declarations: [AppComponent, SeanceComponent, ListseanceComponent, CardComponent, FormComponent, DialogComponent, HomeComponent, UpdateComponent, DetailsComponent],
   entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
