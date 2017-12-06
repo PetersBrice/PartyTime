@@ -30,14 +30,15 @@ mat-list-item:hover {
   height: 170px;
   width: 90px;
   position: fixed;
-  bottom: 0;
+  bottom: 90px;
   right: 0;
 }
 
 .buttons-fab button {
   transition: bottom 0.2s;
+  bottom:90px ;
 }
 
 .buttons-fab:hover .button-add {
-  bottom: 90px;
+  bottom: 180px;
 }
