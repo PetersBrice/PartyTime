@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'nwt-card',
+  selector: 'ybd-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })

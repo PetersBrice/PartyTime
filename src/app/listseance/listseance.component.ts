@@ -7,7 +7,7 @@ import {Observable} from 'rxjs/Observable';
 
 
 @Component({
-  selector: 'nwt-listseance',
+  selector: 'ybd-listseance',
   templateUrl: './listseance.component.html',
   styleUrls: ['./listseance.component.css']
 })

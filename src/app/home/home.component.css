@@ -7,23 +7,23 @@
 }
 
 .title{
-  color: #ffa700;
+  color: darkblue;
   font-size: 80px;
 }
 
 .description{
   margin-left: 40px;
-  color: #ffa700;
+  color: darkblue;
   font-size: 40px;
 }
 
-.paragraphe{
+.paragraphe {
   margin-top: 40px;
   font-size: 20px;
 }
 
 .en_main a{
   text-align: center;
-  color: #ffa700;
+  color: darkblue;
   font-size: 80px;
 }

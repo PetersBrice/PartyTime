@@ -1,7 +1,7 @@
 <section [ngSwitch]="view">
 
   <section *ngSwitchCase="'card'">
-      <nwt-card [seance]="seance" (seanceDelete)="delete($event)" *ngFor="let seance of seances"></nwt-card>
+      <ybd-card [seance]="seance" (seanceDelete)="delete($event)" *ngFor="let seance of seances"></ybd-card>
   </section>
 
   <section *ngSwitchCase="'list'">

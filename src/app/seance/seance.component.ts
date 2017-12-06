@@ -8,7 +8,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
 
 @Component({
-  selector: 'nwt-seance',
+  selector: 'ybd-seance',
   templateUrl: './seance.component.html',
   styleUrls: ['./seance.component.css']
 })

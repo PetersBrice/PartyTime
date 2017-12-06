@@ -9,7 +9,7 @@ import 'rxjs/add/operator/filter';
 import {SeanceService} from '../shared/seance-service/seance.service';
 
 @Component({
-  selector: 'nwt-update',
+  selector: 'ybd-update',
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.css']
 })

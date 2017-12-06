@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'nwt-form',
+  selector: 'ybd-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })

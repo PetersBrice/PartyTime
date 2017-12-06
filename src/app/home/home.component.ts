@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nwt-home',
+  selector: 'ybd-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

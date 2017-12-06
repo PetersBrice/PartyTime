@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'nwt-details',
+  selector: 'ybd-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
